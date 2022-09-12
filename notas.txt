@@ -1,0 +1,35 @@
+npm init -y      // para inicializar el proyecto y crear un package.json
+
+
+//con esto instalamos elint, nodemon para ejecutar el proyecto y verificar sus buenas practicas
+npm i nodemon eslint eslint-config-prettier eslint-plugin-prettier prettier -D
+
+
+
+// con
+
+npm run dev  // se corre el servidor para desarrollo
+
+npm run start  // se corre el servidor para producción
+
+// instalar express
+
+npm i express
+
+npm i faker@5.5.3 -S     // esta version esta funcionando.. la de abajo no
+
+npm i faker // para instalar libreria que genera datos aleatorios
+
+// para el manejo de status de errores
+npm i @hapi/boom
+
+// para validacion
+// ver documentacion en joi.dev
+
+npm i joi
+
+
+
+// para solucionar problemas de cors
+
+npm i cors
