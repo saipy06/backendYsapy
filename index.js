@@ -7,7 +7,8 @@ const routerApi = require('./routes');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
+const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler');
+
 
 // se habilita el json para recibir datos del body
 app.use(express.json());
@@ -36,6 +37,7 @@ app.get('/nueva-ruta', (req, res) => {
 routerApi(app);
 // es muy importante el orden, ya que errorHandler no tiene next
 app.use(logErrors);
+app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 

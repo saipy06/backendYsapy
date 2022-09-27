@@ -1,3 +1,6 @@
+const { ValidatorError } = require('sequelize');
+const boom = require('@hapi/boom');
+
 //maneja los errores de manera global
 function logErrors (err, req, res, next) {
   console.error(err);
@@ -20,6 +23,17 @@ function boomErrorHandler(err, req, res, next) {
   next(err);
 }
 
+function ormErrorHandler(err, req, res, next){
+  if(err instanceof ValidatorError){
+    res.status(409).json({
+      statusCode: 409,
+      message: err.name,
+      errors: err.errors
+    })
+  }
+  next(err);
+}
 
 
-module.exports = { logErrors, errorHandler, boomErrorHandler }
+
+module.exports = { logErrors, errorHandler, boomErrorHandler, ormErrorHandler }

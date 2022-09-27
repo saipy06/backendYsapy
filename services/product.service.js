@@ -1,6 +1,8 @@
 const faker = require('faker');
 const boom = require('@hapi/boom');
 
+const { models } = require('../libs/squelize');
+
 class ProductsService {
   constructor(){
     this.products = [];
@@ -21,21 +23,18 @@ class ProductsService {
   }
 
   async create(data){
-    const newProduct = {
-      id: faker.datatype.uuid(),
-      ...data
-    }
-    this.products.push(newProduct);
+    const newProduct = await models.Product.create(data);
     return newProduct;
   }
 
 
+  // funciona!!!!
+
   async find(){
-    return new Promise((resolve, reject) => {
-      setTimeout( () => {
-        resolve(this.products);
-      }, 5000);
-    })
+    const products = await models.Product.findAll({
+      include: ['category']
+    });
+    return products;
   }
 
 

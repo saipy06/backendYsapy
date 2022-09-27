@@ -33,3 +33,16 @@ npm i joi
 // para solucionar problemas de cors
 
 npm i cors
+
+
+npm install pg
+
+
+
+npm i sequelize-cli -D    // para hacer migraciones, es decir para controlar la evolucion de la BD
+
+
+
+
+npm run migration:generate nombreDeLosCambios    // sirve para crear las migraciones a la bd
+
